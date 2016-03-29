@@ -1,0 +1,13 @@
+<ion-view view-title="Favorites">
+  <ion-content lazy-scroll>
+    <ion-list>
+      <ion-item ng-repeat="photos in favorites" class="item item-thumbnail-left">
+          <img image-lazy-src="{{photos.image_url}}" image-lazy-loader="spiral" image-lazy-distance-from-bottom-to-load="-100">
+          <h2>{{photos.name}}</h2>
+          <p><i class="ion-ios-heart"></i> {{photos.favorites_count}}</p>
+          <p ng-bind-html="photos.description"></p>        
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="!noMoreFavorites" on-infinite="loadMoreFavorites()" distance="10%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
